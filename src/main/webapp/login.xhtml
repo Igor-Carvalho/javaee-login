@@ -8,26 +8,36 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-lg-offset-3">
-            <c:if test="#{ loginBean.temErro }">
-              <div class="alert alert-danger">
-                Login ou senha inválidos
+            <div class="vertical-container">
+              <div class="vertical-center">
+                <h:form style="width: 400px; margin: 0 auto">
+                  <c:if test="#{ loginBean.temErro }">
+                    <div class="alert alert-warning">
+                      Login ou senha inválidos
+                    </div>
+                  </c:if>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Login</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label>Login</label>
+                        <h:inputText class="form-control" value="#{ loginBean.login }"/>
+                      </div>
+                      <div class="form-group">
+                        <label>Senha</label>
+                        <h:inputSecret class="form-control" value="#{ loginBean.senha }"/>
+                      </div>
+                      <h:inputHidden value="#{ loginBean.next }"/>
+                      <div class="form-group">
+                        <h:commandButton class="btn btn-primary" action="#{ loginBean.logar() }" value="Login"></h:commandButton>
+                      </div>
+                    </div>
+                  </div>
+                </h:form>
               </div>
-            </c:if>
-            
-            <h:form>
-              <div class="form-group">
-                <label>Login</label>
-                <h:inputText class="form-control" value="#{ loginBean.login }"/>
-              </div>
-              <div class="form-group">
-                <label>Senha</label>
-                <h:inputSecret class="form-control" value="#{ loginBean.senha }"/>
-              </div>
-              <h:inputHidden value="#{ loginBean.next }"/>
-              <div class="form-group">
-                <h:commandButton class="btn btn-primary" action="#{ loginBean.logar() }" value="Login"></h:commandButton>
-              </div>
-            </h:form>
+            </div>
           </div>
         </div>
       </div>

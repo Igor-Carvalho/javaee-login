@@ -20,7 +20,8 @@ import org.home.web.auth.models.Usuário;
  * @author igor
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/app/*"}, initParams = {
-    @WebInitParam(name = "páginaLogin", value = "/login.faces"),
+    @WebInitParam(name = "páginaLogin", value = "/login.faces")
+    ,
     @WebInitParam(name = "próximaPágina", value = "next")
 })
 public class LoginFilter implements Filter {

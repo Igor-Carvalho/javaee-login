@@ -1,1 +1,18 @@
+.wrapper {
+  background-color: #fff;
+  min-height: calc(100vh - 51px);
+  border-left: thin solid #e7e7e7;
+  border-right: thin solid #e7e7e7;
+  padding-top: 20px;
+}
 
+.vertical-container {
+  height: 100vh;
+  display: table;
+  width: 100%;
+}
+
+.vertical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
