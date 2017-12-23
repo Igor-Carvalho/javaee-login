@@ -31,7 +31,9 @@
                       </div>
                       <h:inputHidden value="#{ loginBean.next }"/>
                       <div class="form-group">
-                        <h:commandButton class="btn btn-primary" action="#{ loginBean.logar() }" value="Login"></h:commandButton>
+                        <h:commandLink class="btn btn-primary" action="#{ loginBean.logar() }">
+                          <i class="fa fa-sign-in"></i> Login
+                        </h:commandLink>
                       </div>
                     </div>
                   </div>
