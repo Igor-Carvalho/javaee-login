@@ -40,4 +40,3 @@ public class InitDBEJB {
         }
     }
 }```
- com dependências`. Execute o projeto e selecione o servidor *payara* configurado anteriormente.ojeto e escolha `construir com dependências`. Execute o projeto e selecione o servidor *payara* configurado anteriormente.
