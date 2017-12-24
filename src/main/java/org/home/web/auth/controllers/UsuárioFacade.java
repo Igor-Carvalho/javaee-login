@@ -13,7 +13,7 @@ import org.home.web.auth.models.Usuário;
  * @author igor
  */
 @Stateless
-public class LoginEJB {
+public class UsuárioFacade {
 
     @PersistenceContext
     private EntityManager em;
@@ -30,7 +30,7 @@ public class LoginEJB {
                     .setParameter("senha", senha)
                     .getSingleResult();
         } catch (NoResultException ex) {
-            Logger.getLogger(LoginEJB.class.getName()).log(Level.WARNING, "Usuário não encontrado.");
+            Logger.getLogger(UsuárioFacade.class.getName()).log(Level.WARNING, "Usuário não encontrado.");
         }
         return usuário;
     }

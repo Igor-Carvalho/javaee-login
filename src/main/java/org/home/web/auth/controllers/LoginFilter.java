@@ -26,7 +26,7 @@ import org.home.web.auth.models.Usuário;
 public class LoginFilter implements Filter {
 
     @EJB
-    private LoginEJB loginEJB;
+    private UsuárioFacade usuárioFacade;
     private FilterConfig filterConfig;
 
     @Override
@@ -55,7 +55,7 @@ public class LoginFilter implements Filter {
         if (userId == null) {
             redirectToLoginPage(httpRequest, httpResponse);
         } else {
-            Usuário usuário = loginEJB.obterUsuário(Long.parseLong(userId.toString()));
+            Usuário usuário = usuárioFacade.obterUsuário(Long.parseLong(userId.toString()));
             if (usuário == null) {
                 redirectToLoginPage(httpRequest, httpResponse);
             } else {

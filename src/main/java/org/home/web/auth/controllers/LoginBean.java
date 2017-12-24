@@ -17,7 +17,7 @@ import org.home.web.auth.models.Usuário;
 public class LoginBean {
 
     @EJB
-    private LoginEJB loginEJB;
+    private UsuárioFacade usuárioFacade;
 
     private String login;
     private String senha;
@@ -28,7 +28,7 @@ public class LoginBean {
     }
 
     public String logar() {
-        Usuário usuário = loginEJB.verificarCredenciais(login, senha);
+        Usuário usuário = usuárioFacade.verificarCredenciais(login, senha);
         if (usuário == null) {
             temErro = true;
             return "";
