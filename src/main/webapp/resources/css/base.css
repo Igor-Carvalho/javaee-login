@@ -1,3 +1,7 @@
+* {
+  font-size: 12.5px;
+}
+
 .wrapper {
   background-color: #fff;
   min-height: calc(100vh - 51px);
@@ -15,4 +19,11 @@
 .vertical-center {
   display: table-cell;
   vertical-align: middle;
+}
+
+.navbar-app {
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  border-top: 0;
 }

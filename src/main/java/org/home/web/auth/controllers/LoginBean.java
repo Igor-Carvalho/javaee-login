@@ -22,9 +22,10 @@ public class LoginBean {
     private String login;
     private String senha;
     private String next;
-    private Boolean temErro = false;
+    private Boolean temErro;
 
     public LoginBean() {
+        temErro = false;
     }
 
     public String logar() {
