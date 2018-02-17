@@ -5,8 +5,6 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import org.home.web.consultas.models.Consulta;
-import org.home.web.consultas.models.Médico;
-import org.home.web.consultas.models.Paciente;
 
 /**
  *
@@ -23,27 +21,29 @@ public class ConsultaBean {
     @EJB
     private MédicoFacade médicoFacade;
     private Consulta consulta;
+    private Long pacienteId;
+    private Long médicoId;
 
     public ConsultaBean() {
+        init();
+    }
+    
+    private void init() {
         consulta = new Consulta();
+        pacienteId = null;
+        médicoId = null;
     }
 
     public String cadastrarConsulta() {
+        consulta.setPaciente(pacienteFacade.find(pacienteId));
+        consulta.setMédico(médicoFacade.find(médicoId));
         consultaFacade.create(consulta);
-        consulta = new Consulta();
+        init();
         return "";
     }
-
+    
     public List<Consulta> getConsultas() {
         return consultaFacade.findAll();
-    }
-
-    public ConsultaFacade getConsultaFacade() {
-        return consultaFacade;
-    }
-
-    public void setConsultaFacade(ConsultaFacade consultaFacade) {
-        this.consultaFacade = consultaFacade;
     }
 
     public Consulta getConsulta() {
@@ -54,12 +54,20 @@ public class ConsultaBean {
         this.consulta = consulta;
     }
 
-    public List<Paciente> getPacientes() {
-        return pacienteFacade.findAll();
+    public Long getPacienteId() {
+        return pacienteId;
     }
 
-    public List<Médico> getMédicos() {
-        return médicoFacade.findAll();
+    public void setPacienteId(Long pacienteId) {
+        this.pacienteId = pacienteId;
+    }
+
+    public Long getMédicoId() {
+        return médicoId;
+    }
+
+    public void setMédicoId(Long médicoId) {
+        this.médicoId = médicoId;
     }
 
 }

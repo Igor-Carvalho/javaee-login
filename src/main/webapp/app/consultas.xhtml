@@ -27,27 +27,22 @@
                   <h:form>
                     <div class="form-group">
                       <label>Paciente</label>
-                      <h:selectOneMenu value="#{ consultaBean.consulta.paciente }" class="form-control">
-                        <f:selectItems value="#{ consultaBean.pacientes }" itemLabel="#{ paciente.nome}"
-                                       itemValue="#{ paciente.id }" var="paciente">
-                          
-                          <f:converter converterId="pacienteConverter"></f:converter>
-                        </f:selectItems>
+                      <h:selectOneMenu value="#{ consultaBean.pacienteId }" class="form-control">
+                        <f:selectItems value="#{ pacienteBean.pacientes }" var="paciente"
+                                       itemLabel="#{ paciente.nome }" itemValue="#{ paciente.id }"></f:selectItems>
                       </h:selectOneMenu>
                     </div>
                     <div class="form-group">
                       <label>Médico</label>
-                      <h:selectOneMenu value="#{ consultaBean.consulta.médico }" class="form-control">
-                        <f:selectItems value="#{ consultaBean.médicos }" itemLabel="#{ médico.nome }"
-                                       itemValue="#{ médico.id }" var="médico">
-                        
-                          <f:converter converterId="médicoConverter"></f:converter></f:selectItems>
+                      <h:selectOneMenu value="#{ consultaBean.médicoId }" class="form-control">
+                        <f:selectItems value="#{ médicoBean.médicos }" var="médico"
+                                       itemLabel="#{ médico.nome }" itemValue="#{ médico.id }"></f:selectItems>
                       </h:selectOneMenu>
                     </div>
                     <div class="form-group">
                       <label>Data da consulta</label>
                       <h:inputText value="#{ consultaBean.consulta.dataConsulta }" class="form-control">
-                        <f:convertDateTime pattern="dd/mm/yyyy"/>
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                       </h:inputText>
                     </div>
                     <hr/>
@@ -72,11 +67,13 @@
                       </h:column>
                       <h:column>
                         <f:facet name="header">Médico</f:facet>
-                        <h:outputText value="#{ consulta.médico.endereço }"></h:outputText>
+                        <h:outputText value="#{ consulta.médico.nome }"></h:outputText>
                       </h:column>
                       <h:column>
                         <f:facet name="header">Data Consulta</f:facet>
-                        <h:outputText value="#{ consulta.dataConsulta }"></h:outputText>
+                        <h:outputText value="#{ consulta.dataConsulta }">
+                          <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                        </h:outputText>
                       </h:column>
                     </h:dataTable>
                   </c:if>
