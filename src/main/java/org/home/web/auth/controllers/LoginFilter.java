@@ -55,7 +55,7 @@ public class LoginFilter implements Filter {
         if (userId == null) {
             redirectToLoginPage(httpRequest, httpResponse);
         } else {
-            Usuário usuário = usuárioFacade.obterUsuário(Long.parseLong(userId.toString()));
+            Usuário usuário = usuárioFacade.find(Long.parseLong(userId.toString()));
             if (usuário == null) {
                 redirectToLoginPage(httpRequest, httpResponse);
             } else {

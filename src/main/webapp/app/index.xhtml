@@ -3,9 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
   <ui:composition template="../base.xhtml">
-    <ui:define name="title">Bem vindo ${ requestScope.usuário.login }</ui:define>
+    <ui:define name="title">Bem vindo ${ requestScope.usuário.nome }</ui:define>
     <ui:define name="content">
-      <h4>Bem vindo usuário ${ requestScope.usuário.login }</h4>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Cadastros</h3>
+            </div>
+            
+            <div class="panel-body">
+              <ul>
+                <li><a href="/app/pacientes.faces">Cadastrar Paciente</a></li>
+                <li><a href="/app/médicos.faces">Cadastrar Médico</a></li>
+                <li><a href="/app/consultas.faces">Cadastrar Consulta</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </ui:define>
   </ui:composition>
 </html>

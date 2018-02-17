@@ -1,23 +1,22 @@
 package org.home.web.auth.controllers;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.home.web.auth.models.Usuário;
+import org.home.web.consultas.models.Atendente;
 
 /**
  * EJB para inicialização de usuários no db para testes.
- * 
+ *
  * @author igor
  */
 @Singleton
 @Startup
 public class InitDBEJB {
 
-    @PersistenceContext
-    private EntityManager em;
+    @EJB
+    private UsuárioFacade usuárioFacade;
 
     /**
      * Insere usuários no banco de dados.
@@ -25,11 +24,13 @@ public class InitDBEJB {
      */
     @PostConstruct
     public void inicializarUsuários() {
-        long total = Long.parseLong(em.createQuery("select count(u) from usuário u").getSingleResult().toString());
+        long total = usuárioFacade.count();
         if (total == 0) {
-            em.persist(new Usuário("user", "password"));
-            em.persist(new Usuário("igor", "igor123"));
-            em.persist(new Usuário("natan", "natan123"));
+            Atendente igor = new Atendente();
+            igor.setLogin("igor");
+            igor.setSenha("igor123");
+            igor.setNome("Igor Carvalho");
+            usuárioFacade.create(igor);
         }
     }
 }

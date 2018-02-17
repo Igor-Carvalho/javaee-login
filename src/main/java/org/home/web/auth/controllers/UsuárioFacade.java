@@ -7,19 +7,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import org.home.web.auth.models.Usuário;
+import org.home.web.core.controllers.AbstractFacade;
 
 /**
  *
  * @author igor
  */
 @Stateless
-public class UsuárioFacade {
+public class UsuárioFacade extends AbstractFacade<Usuário> {
 
     @PersistenceContext
     private EntityManager em;
-    
-    public void criarUsuário(Usuário usuário) {
-        em.persist(usuário);
+
+    public UsuárioFacade() {
+        super(Usuário.class);
     }
 
     public Usuário verificarCredenciais(String login, String senha) {
@@ -35,8 +36,9 @@ public class UsuárioFacade {
         return usuário;
     }
 
-    public Usuário obterUsuário(Long id) {
-        return em.find(Usuário.class, id);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
 }
